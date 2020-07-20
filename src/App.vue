@@ -6,7 +6,7 @@
         <img
           v-for="img in imagesData"
           :key="img.alt"
-          @click="getFunction(img.click)"
+          @click="getFunction(img.click, img.value)"
           :alt="img.alt"
           :src="img.src"
           :style="img.style"
@@ -32,66 +32,8 @@ export default {
     };
   },
   methods: {
-    getFunction: function(fn) {
-      switch (fn) {
-        case "clearValue":
-          this.clearValue();
-          break;
-        case "negativePositive":
-          this.negativePositive();
-          break;
-        case "percentage":
-          this.percentage();
-          break;
-        case "operations('divide')":
-          this.operations("divide");
-          break;
-        case "number(7)":
-          this.number(7);
-          break;
-        case "number(8)":
-          this.number(8);
-          break;
-        case "number(9)":
-          this.number(9);
-          break;
-        case "operations('mutliply')":
-          this.operations("mutliply");
-          break;
-        case "number(4)":
-          this.number(4);
-          break;
-        case "number(5)":
-          this.number(5);
-          break;
-        case "number(6)":
-          this.number(6);
-          break;
-        case "operations('subtract')":
-          this.operations("subtract");
-          break;
-        case "number(1)":
-          this.number(1);
-          break;
-        case "number(2)":
-          this.number(2);
-          break;
-        case "number(3)":
-          this.number(3);
-          break;
-        case "operations('add')":
-          this.operations("add");
-          break;
-        case "number(0)":
-          this.number(0);
-          break;
-        case "decimal":
-          this.decimal();
-          break;
-        case "equal":
-          this.equal();
-          break;
-      }
+    getFunction: function(fn, value) {
+      this[fn](value);
     },
     number: function(value) {
       if (this.firstValue !== 0 && this.replaceValue) {
